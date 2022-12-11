@@ -59,7 +59,7 @@ CREATE TABLE `leftover` (
   `Meal` varchar(6) NOT NULL,
   `End_Weight` varchar(45) DEFAULT NULL,
   `Actual_Demand` varchar(45) DEFAULT NULL,
-  `Leftover_per_person` varchar(45) DEFAULT NULL,
+  `Leftover_Per_Person` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Days`,`Meal`),
   KEY `fk_LEFTOVER_DATE_TIME1_idx` (`Days`,`Meal`),
   CONSTRAINT `fk_LEFTOVER_DATE_TIME1` FOREIGN KEY (`Days`, `Meal`) REFERENCES `days_meal` (`Days`, `Meal`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -132,6 +132,7 @@ CREATE TABLE `menu_management` (
   `Side2` varchar(45) NOT NULL,
   `Kimchi` varchar(45) NOT NULL,
   `Initial_Weight` varchar(45) DEFAULT NULL,
+  `Production_Cost` varchar(45) NOT NULL,
   PRIMARY KEY (`Days`,`Meal`),
   KEY `fk_MENU_MANAGEMENT_DATE_TIME1_idx` (`Days`,`Meal`),
   CONSTRAINT `fk_MENU_MANAGEMENT_DATE_TIME1` FOREIGN KEY (`Days`, `Meal`) REFERENCES `days_meal` (`Days`, `Meal`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -140,27 +141,62 @@ CREATE TABLE `menu_management` (
 /* ANNOUNCE VIEW 생성 */
 
 CREATE VIEW announce AS
-SELECT l.days, l.meal, end_weight,
+SELECT l.days, l.meal, m.initial_weight, end_weight,
 ((rice_preference + soup_preference + noodle_preference + main_preference + side1_preference
 + side2_preference + kimchi_preference)/7) as Avg_Demand,
 ((rice_preference_taste + soup_preference_taste + noodle_preference_taste + main_preference_taste
  + side1_preference_taste + side2_preference_taste + kimchi_preference_taste)/7) as Avg_taste,
  ((rice_preference_quantity + soup_preference_quantity + noodle_preference_quantity + main_preference_quantity
  + side1_preference_quantity + side2_preference_quantity + kimchi_preference_quantity)/7) as Avg_quantity
-from leftover as l join demand_survey as s join menu_evaluation_quantity as q join menu_evaluation_taste as t
+from leftover as l join demand_survey as s join menu_evaluation_quantity as q 
+join menu_evaluation_taste as t join menu_management as m
 ON l.days = s.days
 AND s.days = q.days
 AND q.days = t.days
+AND t.days = m.days
 AND l.meal = s.meal
 AND s.meal = q.meal
 AND q.meal = t.meal
+AND t.meal = m.meal
 AND s.customerid = q.customerid
 AND q.customerid = t.customerid;
 
 /* ANNOUNCEMENT VIEW 생성 */
 
 CREATE VIEW ANNOUNCEMENT AS
-SELECT days, meal, end_weight, AVG(avg_demand) AS Average_Demand, 
+SELECT days, meal, initial_weight, end_weight, AVG(avg_demand) AS Average_Demand, 
 AVG(avg_taste) AS Average_Taste, AVG(avg_quantity) AS Average_Quantity
 FROM announce
 GROUP BY days, meal;
+
+/* LEFTOVER_VIEW VIEW 생성*/
+
+CREATE VIEW LEFTOVER_VIEW AS
+SELECT L.days, L.meal, M.initial_weight, L.end_weight, L.actual_demand
+, (L.end_weight / M.initial_weight) AS wasted_ratio
+, (M.production_cost * L.end_weight / M.initial_weight + end_weight * 130) AS wasted_cost
+FROM leftover AS L JOiN menu_management AS M
+ON L.days = M.days
+AND L.meal = M.meal;
+
+/* Update_ID procedure 생성 */
+
+DELIMITER //
+
+CREATE PROCEDURE Update_ID
+			(IN		insertcustomerID INT,
+            IN		newID VARCHAR(45),
+            IN 		oldID VARCHAR(45),
+            IN		insertpassword VARCHAR(45))
+BEGIN
+    
+	UPDATE CUSTOMER
+	SET ID = newID
+	WHERE customerid = insertcustomerid
+    AND id = oldid
+    AND password = insertpassword;
+
+END
+//
+
+DELIMITER ;
