@@ -45,11 +45,11 @@ def everyday_update(db):
                 pass
 
             insert_sql = f"""INSERT INTO menu_management
-                    (Days, Meal, Rice, Soup, Noodle, Main, Side1, Side2, Kimchi, Initial_Weight)
+                    (Days, Meal, Rice, Soup, Noodle, Main, Side1, Side2, Kimchi, Initial_Weight, Production_cost)
                     VALUES('{menu_management['Days'][i]}', '{menu_management['Meal'][i]}', '{menu_management['Rice'][i]}',
                     '{menu_management['Soup'][i]}','{menu_management['Noodle'][i]}','{menu_management['Main'][i]}',
                     '{menu_management['Side1'][i]}','{menu_management['Side2'][i]}','{menu_management['Kimchi'][i]}',
-                    '{menu_management['Initial_Weight'][i]}');"""
+                    '{menu_management['Initial_Weight'][i]}','{menu_management['Production_cost'][i]}');"""
 
             # print(insert_sql)
             try:
