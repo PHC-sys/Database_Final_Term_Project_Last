@@ -7,8 +7,11 @@ Requirement: pymysql, datetime, pandas
 Sequence for Using this code.
 1. 스키마, 테이블 생성: 'TermProject'라는 Schema 생성, Create-Table-View-Procedure-Termproject.sql 실행
 2. mysql 비밀번호 설정: mysql password -> 환경변수에 'MYSQLPW' 이름으로 저장
-2. 기초 랜덤 데이터 생성: initialize.py 실행 vs 업로드 되어 있는 insert sql 파일 실행
-3. 응용 프로그램 실행: logIn.py 실행
+2. 기초 랜덤 데이터 생성: initialize.py 실행 OR 업로드 되어 있는 insert sql 파일 실행
+3. 응용 프로그램 실행(설명서 참고): logIn.py 실행
+  * 활용 목적
+  - 구축해놓은 데이터베이스를 활용 및 새로운 데이터 생성 및 저장
+  - 사용자에게 데이터베이스 활용한 서비스 제공 
 
 
 # <dbModule.py>  
