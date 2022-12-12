@@ -11,22 +11,22 @@ Sequence for Using this code.
 3. logIn.py 실행
 
 
-<dbModule.py>
-class : Database - 데이터베이스 객체 (조교님이 주신 파일 변형하여 사용함)
-  method:
-    init: db 연결 및 cursor 설정
-    logcheck: id, password 입력 받아서 데이터 베이스와 체크 후 로그인 확인
-    get_list: TableName, columnName(개수제한x) 입력 받아서 해당 테이블 내 지정된 컬럼 데이터들 전부 다 딕셔너리로 출력
-    get_primary_keys_info: TableName 입력 받아서 해당 테이블의 Primary Key 리스트로 출력
-    sign_up: PhoneNumber, id, Password, , SchoolMail 입력 받아서 회원가입 실행(실제로 customer 테이블에 Insert)
-    survey_submission: 개인이 수요조사를 하면서 입력한 데이터들을 데이터베이스 demand_survey 테이블에 Insert
-    menu_evaluation_taste: 맛 관련 사후 만족도 조사에 대한 데이터들을 menu_evaluation_taste 테이블에 Insert
-    menu_evaluation_quantity: 양 관련 사후 만족도 조사에 대한 데이터들을 menu_evaluation_taste 테이블에 Insert
-    execute: sql문 입력받아서 실행
-    executeOne: 실행 후 커서가 데이터 1개 반환
-    executeAll: 실행 후 커서가 모든 데이터 반환
-    commit: 커밋
-    close: 데이터베이스 닫음
+<dbModule.py>  
+# class : Database - 데이터베이스 객체 (조교님이 주신 파일 변형하여 사용함)  
+  # method:  
+    # init: db 연결 및 cursor 설정  
+    # logcheck: id, password 입력 받아서 데이터 베이스와 체크 후 로그인 확인  
+    # get_list: TableName, columnName(개수제한x) 입력 받아서 해당 테이블 내 지정된 컬럼 데이터들 전부 다 딕셔너리로 출력  
+    # get_primary_keys_info: TableName 입력 받아서 해당 테이블의 Primary Key 리스트로 출력  
+    # sign_up: PhoneNumber, id, Password, , SchoolMail 입력 받아서 회원가입 실행(실제로 customer 테이블에 Insert)  
+    # survey_submission: 개인이 수요조사를 하면서 입력한 데이터들을 데이터베이스 demand_survey 테이블에 Insert  
+    # menu_evaluation_taste: 맛 관련 사후 만족도 조사에 대한 데이터들을 menu_evaluation_taste 테이블에 Insert  
+    # menu_evaluation_quantity: 양 관련 사후 만족도 조사에 대한 데이터들을 menu_evaluation_taste 테이블에 Insert  
+    # execute: sql문 입력받아서 실행  
+    # executeOne: 실행 후 커서가 데이터 1개 반환  
+    # executeAll: 실행 후 커서가 모든 데이터 반환  
+    # commit: 커밋  
+    # close: 데이터베이스 닫음  
 
 
 <sandbox>
