@@ -11,8 +11,9 @@ Sequence for Using this code.
 3. logIn.py 실행
 
 
-<dbModule.py>  
-# class : Database - 데이터베이스 객체 (조교님이 주신 파일 변형하여 사용함)  
+# <dbModule.py>  
+  # class : Database - 데이터베이스 객체
+  # (조교님이 주신 파일 변형하여 사용함)  
   # method:  
     # init: db 연결 및 cursor 설정  
     # logcheck: id, password 입력 받아서 데이터 베이스와 체크 후 로그인 확인  
@@ -29,40 +30,39 @@ Sequence for Using this code.
     # close: 데이터베이스 닫음  
 
 
-<sandbox>
-    convertor: *arg(다중인자)를 입력 받아 튜플형태를 문자열 합으로 변환
+# <sandbox>  
+    # convertor: *arg(다중인자)를 입력 받아 튜플형태를 문자열 합으로 변환  
   
 
 
-<initialize.py>
-    initialize: Database 객체 입력 받아서 각 테이블 별 랜덤 데이터들 생성
+# <initialize.py>  
+    # initialize: Database 객체 입력 받아서 각 테이블 별 랜덤 데이터들 생성  
+
+
+# <generator.py>
+    # customer_info_generator: 랜덤으로 회원 데이터 채워주는 함수  
+    # days_meal_generator: 기간값을 입력받아 오늘부터 이전 몇 일까지 days_meal Insert(Initialize에 사용)  
+    # update_days_meal_generator: 기간값을 입력받아 오늘부터 몇 일 뒤까지의 days_meal Insert(Initialize에 사용)  
+    # initial_leftover_generator: leftover 랜덤 데이터 생성  
+    # initial_menu_management_generator: 일별 메뉴 데이터 생성  
+    # initial_demand_survey_generator: 수요조사 랜덤 데이터 생성  
+    # initial_menu_evaluation_generator: 만족도조사 랜덤 데이터 생성   
 
   
 
-<generator.py>
-    customer_info_generator: 랜덤으로 회원 데이터 채워주는 함수
-    days_meal_generator: 기간값을 입력받아 오늘부터 이전 몇 일까지 days_meal Insert(Initialize에 사용)
-    update_days_meal_generator: 기간값을 입력받아 오늘부터 몇 일 뒤까지의 days_meal Insert(Initialize에 사용)
-    initial_leftover_generator: leftover 랜덤 데이터 생성
-    initial_menu_management_generator: 일별 메뉴 데이터 생성
-    initial_demand_survey_generator: 수요조사 랜덤 데이터 생성
-    initial_menu_evaluation_generator: 만족도조사 랜덤 데이터 생성 
-
-  
-
-<everyday_update.py>
-    everyday_update: days_meal, leftover, menu_management 테이블 데이터 오늘 날짜까지 업데이트
-    update_menu_management: days_meal, menu_management 테이블 일주일 뒤 데이터까지 업데이트
+# <everyday_update.py>  
+    # everyday_update: days_meal, leftover, menu_management 테이블 데이터 오늘 날짜까지 업데이트  
+    # update_menu_management: days_meal, menu_management 테이블 일주일 뒤 데이터까지 업데이트  
 
 
 
-<delete_data.py>
-    delete_data: Database 객체와 tableName 입력받고, 추가적인 pk data를 input으로 받아 테이블의 pk value에 따른 칼럼들 삭제
+# <delete_data.py>  
+    # delete_data: Database 객체와 tableName 입력받고, 추가적인 pk data를 input으로 받아 테이블의 pk value에 따른 칼럼들 삭제  
     
 
-  
-<logIn.py>
-    log_in: 맨처음 로그인 창 실행 - 로그인, 회원가입, 나가기 선택 가능
-    customer_service: 로그인 이후 Announcement, Demand Survey, Menu Evaluation, Withdrawl, Go Back 지원
-    demand_survey: 메뉴 조회, 수요조사 참여 가능
-    menu_evaluation: 맛, 양에 따른 만족도 조사 참여 가능
+ 
+# <logIn.py>  
+    # log_in: 맨처음 로그인 창 실행 - 로그인, 회원가입, 나가기 선택 가능  
+    # customer_service: 로그인 이후 Announcement, Demand Survey, Menu Evaluation, Withdrawl, Go Back 지원  
+    # demand_survey: 메뉴 조회, 수요조사 참여 가능  
+    # menu_evaluation: 맛, 양에 따른 만족도 조사 참여 가능  
