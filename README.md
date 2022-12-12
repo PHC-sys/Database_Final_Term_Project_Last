@@ -30,7 +30,7 @@ Sequence for Using this code.
     # close: 데이터베이스 닫음  
 
 
-# <sandbox>  
+# <sandbox.py>  
     # convertor: *arg(다중인자)를 입력 받아 튜플형태를 문자열 합으로 변환  
   
 
