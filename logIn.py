@@ -75,7 +75,7 @@ def customer_service(db):
             announcement = pd.DataFrame(announcement)
             #print(announcement)
 
-            today_announcement = announcement.iloc[-2:]
+            today_announcement = announcement.iloc[-4:-2]
             pd.set_option('display.max_columns', None)
             print(title)
             print(today_announcement,'\n')
