@@ -191,8 +191,7 @@ BEGIN
     
 	UPDATE CUSTOMER
 	SET ID = newID
-	WHERE customerid = insertcustomerid
-    AND id = oldid
+	WHERE ID = oldID
     AND password = insertpassword;
 
 END
